@@ -20,10 +20,7 @@ contract MoodNftIntegrationtest is Test {
     function setUp() public {
         deployer = new DeployMoodNft();
         moodNft = deployer.run();
-        assertTrue(
-            address(moodNft) != address(0),
-            "MoodNft contract should be deployed"
-        );
+        assertTrue(address(moodNft) != address(0), "MoodNft contract should be deployed");
         console.log("MoodNft contract deployed at:", address(moodNft));
     }
 
@@ -37,9 +34,6 @@ contract MoodNftIntegrationtest is Test {
         vm.prank(USER1);
         moodNft.flipMood(0);
         string memory tokenUri = moodNft.tokenURI(0);
-        assert(
-            keccak256(abi.encodePacked(tokenUri)) ==
-                keccak256(abi.encodePacked(moodNft.tokenURImaker(Sad_SVG)))
-        );
+        assert(keccak256(abi.encodePacked(tokenUri)) == keccak256(abi.encodePacked(moodNft.tokenURImaker(Sad_SVG))));
     }
 }
